@@ -1,9 +1,28 @@
 pipeline{ 
+	//TO use any docker images as a agent 
+	// agent{
+	// 	docker {
+	// 		image '<Image Name>'
+	// 	}
+	// }
+
+	tools{
+		maven "MAVEN"
+	}
+
+	environment {
+		DOCKER_CRED = 'docker-hub'
+	}
 	agent any
 	stages{
-		stage("Build") {
+		stage("Compile the code") {
 			steps {
-				sh "echo Building"
+				sh "mvn clean compile"
+			}
+		}
+		stage("Test") {
+			steps {
+				sh "mvn test"
 			}
 		}
 	}
