@@ -7,7 +7,7 @@ pipeline{
 	// }
 
 	tools{
-		maven "MAVEN"
+		maven "MAVEN-6"
 	}
 
 	environment {
