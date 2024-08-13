@@ -23,7 +23,7 @@ pipeline{
 		stage("Build Docker Images") {
 			steps {
 				script {
-					dockerImage = docker.build("vishnuprasanna/currency-exchange-devops:+${env.BUILD_TAG}")
+					dockerImage = docker.build("vishnuprasanna/currency-exchange-devops:+${env.BUILD_ID}")
 				}
 			}
 		}
@@ -31,7 +31,7 @@ pipeline{
 			steps {
 				script {
 					docker.withRegistry("", DOCKER_CREDENTIALS_ID) {
-						dockerImage.push(env.BUILD_TAG)
+						dockerImage.push(env.BUILD_ID)
 						dockerImage.push("latest")
 					}
 				}
