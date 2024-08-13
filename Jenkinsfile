@@ -23,7 +23,7 @@ pipeline{
 		stage("Build Docker Images") {
 			steps {
 				script {
-					dockerImage = docker.build("vishnuprasanna/currency-exchange-devops:+${env.BUILD_ID}")
+					dockerImage = docker.build("vishnuprasanna/currency-exchange-devops:${env.BUILD_ID}")
 				}
 			}
 		}
